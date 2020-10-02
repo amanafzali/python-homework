@@ -39,14 +39,14 @@ for rows in sales:
     # Line_Item_ID,Date,Credit_Card_Number,Quantity,Menu_Item
     # @TODO: Initialize sales data variables
     
-    Quality = int(rows[3])
+    quantity = int(rows[3])
     sales_Item = (rows[4])
     
     # @TODO:
     # If the item value not in the report, add it as a new entry with initialized metrics
     # Naming convention allows the keys to be ordered in logical fashion, count, revenue, cost, profit
-    if sales_item not in report.keys():
-        report[sales_item] = {
+    if sales_Item not in report.keys():
+        report[sales_Item] = {
         "01-count": 0,
         "02-revenue": 0,
         "03-cost": 0,
@@ -60,8 +60,8 @@ for rows in sales:
         # Item,Category,Description,Price,Cost
         # @TODO: Initialize menu data variables
         Item = (row[0])
-        price = int(row[3])
-        cost = int(row[4])
+        price = float(row[3])
+        cost = float(row[4])
 
 
         # @TODO: Calculate profit of each item in the menu data
@@ -69,21 +69,21 @@ for rows in sales:
 
 
         # @TODO: If the item value in our sales data is equal to the any of the items in the menu, then begin tracking metrics for that item
-        if sales_item == Item:
+        if sales_Item == Item:
 
             # @TODO: Print out matching menu data
-            print(f"matching data {sales_item}")
+            print(f"matching data {sales_Item}")
             
             
             # @TODO: Cumulatively add up the metrics for each item key
-            report[sales_item]["01-count"] += quantity
-            report[sales_item]["02-revenue"] += price * quantity
-            report[sales_item]["03-cogs"] += cost * quantity
-            report[sales_item]["04-profit"] += profit * quantity
+            report[sales_Item]["01-count"] += quantity
+            report[sales_Item]["02-revenue"] += price * quantity
+            report[sales_Item]["03-cost"] += cost * quantity
+            report[sales_Item]["04-profit"] += profit * quantity
 
         # @TODO: Else, the sales item does not equal any fo the item in the menu data, therefore no match
         else:
-            print(f"{sales_item} does not equal {Item}! NO MATCH!")
+            print(f"{sales_Item} does not equal {Item}! NO MATCH!")
         
 
     # @TODO: Increment the row counter by 1
